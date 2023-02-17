@@ -37,7 +37,7 @@
 
   <dt>Delete photo</dt>
   <dd>
-    <a href="/delete_photo/<%= @the_photo.image %>;">
+    <a href="/delete_photo/<%= @the_photo.id %>">
       Delete this photo
     </a>
   </dd>
@@ -52,19 +52,24 @@
     <th>Posted</th>
   </tr>
 
-  <tr>
-    <td>
-      anisa
-    </td>
+  <% @the_photo.comments.each do |a_comment| %>
 
-    <td>
-      There was never a genius without a tincture of madness.
-    </td>
+    <tr>
+      <td>
+        <%= a_comment.commenter.username %>
+      </td>
 
-    <td>
-      2019-04-29 03:52:01 UTC
-    </td>
-  </tr>
+      <td>
+        <%= a_comment.body %>
+      </td>
+
+      <td>
+        <%= a_comment.created_at %>
+      </td>
+    </tr>
+
+  <% end %>
+
 </table>
 
 <h3>Add a new comment</h3>
